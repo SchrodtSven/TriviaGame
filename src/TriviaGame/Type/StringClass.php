@@ -57,8 +57,63 @@ class StringClass implements \Stringable
     }
 
     public function split(string $sparator): ArrayClass
-    {
+    {   
         return new ArrayClass(explode($sparator, $this->content));
+    }
+
+    /**
+     * Converting current content to upper case
+     * 
+     * @return self
+     */
+    public function toUpper(): self
+    {
+        $this->content = \strtoupper($this->content);
+        return $this;
+    }
+
+    /**
+     * Converting current content to lower case
+     * 
+     * @return self
+     */
+    public function toLower(): self
+    {
+        $this->content = \strtolower($this->content);
+        return $this;
+    }
+
+    /**
+     * Checking if current content ends with $end
+     * 
+     * @param string $end
+     * @return self 
+     */
+    public function ends(string $end): bool
+    {
+        return \str_ends_with($this->content, $end);
+    }
+
+    /**
+     * Checking if current content begins with $begin
+     * 
+     * @param string $begin
+     * @return self 
+     */
+    public function begins(string $begin): bool
+    {
+        return \str_starts_with($this->content, $begin);
+    }
+
+    /**
+     * Checking if current content contains $needle
+     * 
+     * @param string $needle
+     * @return self
+     */
+    public function contains(string $needle): bool
+    {
+        return \str_contains($this->content, $needle);
     }
 
     public function replace(string|array $find, string|array $replace): self

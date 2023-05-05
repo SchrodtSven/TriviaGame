@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace SchrodtSven\TriviaGame;
 
+
 class Autoload
 {
 
@@ -71,6 +72,15 @@ class Autoload
                 }
             }
         });
+    }
+
+    public function __construct()
+    {
+        // workaround for current PHP Development server
+        if(str_ends_with(getcwd(), 'public')) {
+            chdir(('../'));    
+        }
+
     }
 }
 

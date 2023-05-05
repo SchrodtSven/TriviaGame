@@ -212,6 +212,22 @@ class ArrayClass implements \Iterator, \ArrayAccess, \Countable
     }
 
     /**
+     * Unsetting elements with empty values
+     * 
+     * @return self
+     */
+    public function unsetEmptyAtMargins(): self
+    {   
+        $first = 0;
+        $last = count($this)-1;
+       
+        if(empty($this->content[$first])) unset($this->content[$first]);
+       
+        if(empty($this->content[$last])) unset($this->content[$last]);
+        return $this;
+    }
+
+    /**
      * Creating instance from JSON file
      * 
      * @param string $filenname
