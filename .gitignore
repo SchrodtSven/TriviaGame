@@ -2,4 +2,7 @@
 archive
 .vscode
 .DS_Store
-
+phpunit
+.phpunit.result.cache
+phpunit.phar
+foo.php

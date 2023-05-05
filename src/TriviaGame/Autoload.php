@@ -8,7 +8,7 @@ declare(strict_types=1);
  * @link https://github.com/SchrodtSven/TriviaGame
  * @package TriviaGame
  * @version 0.1
- * @since 
+ * @since 2023-05-04
  */
 
 
