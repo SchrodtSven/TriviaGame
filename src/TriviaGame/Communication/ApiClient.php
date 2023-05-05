@@ -21,7 +21,7 @@ namespace SchrodtSven\TriviaGame\Communication;
 class ApiClient
 {
     // API return codes 
-    public RETURN_CODES  = [
+    public const RETURN_CODES  = [
           0, //  Success Returned results successfully.
           1, //  No Results Could not return results. The API doesn't have enough questions for your query. (Ex. Asking for 50 Questions in a Category that only has 20.)
           2, //  Invalid Parameter Contains an invalid parameter. Arguements passed in aren't valid. (Ex. Amount = Five)
@@ -30,7 +30,7 @@ class ApiClient
     ];
 
     // Encoding types
-    public const [
+    public const ENCODING_TYPES = [
         'urlLegacy', 'url3986', 'base64'
     ];
     

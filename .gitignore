@@ -1,3 +1,5 @@
-# local dev & test stuff
+# local dev & test and Mac spec. stuff
 archive
+.vscode
+.DS_Store
 

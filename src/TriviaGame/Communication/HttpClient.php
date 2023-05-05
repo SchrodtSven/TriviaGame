@@ -2,7 +2,6 @@
 declare(strict_types=1);
 /**
  * Simpler access to  HTTP Client functions of the cURL - extension
- *
  * currently the client is working with default settings - configuration will follow
  *
  *
@@ -72,7 +71,7 @@ class HttpClient
      *
      * @var int {resource}
      */
-    private $curlHandle;
+    private \CurlHandle $curlHandle;
 
     /**
      * Separator of headers and payload
@@ -209,5 +208,11 @@ class HttpClient
     {
         $this->processRequest($uri);
         return $this->getPayload();
+    }
+
+    // @FIXME -> implement me!!!
+    public function setPayloadParameters()
+    {
+
     }
 }
