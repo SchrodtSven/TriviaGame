@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace SchrodtSven\TriviaGame\Type;
 use SchrodtSven\TriviaGame\Application\Internal\FileError;
 use SchrodtSven\TriviaGame\Type\StringClass;
+use SchrodtSven\TriviaGame\Type\ArrayFilter;
 
 class ArrayClass implements \Iterator, \ArrayAccess, \Countable
 {
@@ -381,5 +382,10 @@ class ArrayClass implements \Iterator, \ArrayAccess, \Countable
     {
         \shuffle($this->content);
         return $this;
+    }
+
+    public function filterBy(string $subject): ArrayFilter
+    {
+        return new ArrayFilter($this, $subject);
     }
 }
