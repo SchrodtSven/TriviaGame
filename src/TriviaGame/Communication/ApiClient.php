@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @FIXME reacting on http status   !== HttpProtocol::STATUS_ _OK
  *
  * @package P7TriviaGame
- * @author  Sven Schrodt <sven@schrodt-service.net>
+ * @author  Sven Schrodt <sven@schrodt.club>
  * @version 0.1
  * @since 2023-05-04
  * @link https://github.com/SchrodtSven/TriviaGame
