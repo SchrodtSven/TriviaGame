@@ -15,6 +15,7 @@ declare(strict_types=1);
 
            
    return [
+                ['firstName' => 'Sven', 'lastName' => 'Schrodt', 'category' => 'Moon II', 'longitude' => '6.640815', 'latitude' => '51.451603', 'carModel' => 'Volvo V70', 'macAddr' => 'DE:AD:BE:AF:23:23', 'subCategory' => 'Fun Storage', 'jobTitle' => 'Chéf'],
                 ['firstName' => 'Gabriel', 'lastName' => 'Bailey', 'category' => 'Home', 'longitude' => '-92.564430', 'latitude' => '38.624862', 'carModel' => 'Vandura 2500', 'macAddr' => 'A5:E6:6D:CA:F3:BB', 'subCategory' => 'Storage', 'jobTitle' => 'Finance Director'],
                 ['firstName' => 'John', 'lastName' => 'Taylor', 'category' => 'Health', 'longitude' => '-93.807740', 'latitude' => '45.301337', 'carModel' => '3000GT', 'macAddr' => 'D7:3F:FF:DE:CF:AF', 'subCategory' => 'First Aid', 'jobTitle' => 'Marketer'],
                 ['firstName' => 'Mateo', 'lastName' => 'Hughes', 'category' => 'Home', 'longitude' => '-101.057680', 'latitude' => '43.321116', 'carModel' => 'Caravan Passenger', 'macAddr' => 'B8:07:92:4B:ED:5E', 'subCategory' => 'Cooking', 'jobTitle' => 'Associate Engineer'],

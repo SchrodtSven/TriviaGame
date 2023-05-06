@@ -6,7 +6,5 @@ use SchrodtSven\TriviaGame\Application\Config;
 use SchrodtSven\TriviaGame\Application\FrontController;
 use SchrodtSven\TriviaGame\Communication\HttpClient;
 
-//var_dump($_SERVER);
-var_dump(getcwd());
 (new FrontController())->parseRoute();
 

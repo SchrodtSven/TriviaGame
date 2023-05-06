@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 /**
- * Arrays as instances 
+ * Class for filtering operations on arrays
  * 
  * @author Sven Schrodt<sven@schrodt.club>
  * @link https://github.com/SchrodtSven/TriviaGame
@@ -35,9 +35,24 @@ class ArrayFilter
                     if(in_array($item[$subject], $values)) return true;
                 }
             )
-    );
+        );
         return $this;
     }
+
+    private function genericFilter(array $values, \callable $callback): self
+    {
+        $subject = $this->subject;
+        $this->filtered = new ArrayClass(
+            array_filter(
+                $this->original->getAsArray(), 
+                function($item) use($values, $subject, $callback) {
+                    $callback($item);
+                }
+            )
+        );
+        return $this;
+    }
+
 
     /**
      * Get the value of filtered

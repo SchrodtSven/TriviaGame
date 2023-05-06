@@ -19,7 +19,9 @@ class PhpTplParser
 
     private const TPL_SUFFIX = '.phtml';
 
-    private array $props = [];
+    private array $props = ['lang' => 'en'];
+
+
 
     public function __construct(private string $tplName = 'GenericDoc')
     {
