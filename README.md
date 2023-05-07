@@ -7,7 +7,7 @@ Tiny trivia game consuming Open Trivia DB (https://opentdb.com/) API
 
 
 ## Outlook / Todo
- - Generate *new* random questions fed by different (free | os) resources 
+ - Generate *new* random questions fed by different (free | oss) resources 
 
 ## General
 - using "live" API of Open Trivia Database or

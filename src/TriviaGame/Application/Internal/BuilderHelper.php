@@ -29,9 +29,9 @@ class BuilderHelper
 {
     public function quote(string $value, string $mark ="'"): string
     {
-        if(strstr($value, $mark)!== false) {
-            $value = str_replace($mark, "\\" . $mark, $value);
-        }
+        // if(strstr($value, $mark)!== false) {
+        //     $value = str_replace($mark, "\\" . $mark, $value);
+        // }
         return sprintf('%s%s%s', $mark, $value, $mark);
     }
 

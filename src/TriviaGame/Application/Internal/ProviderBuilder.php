@@ -22,13 +22,9 @@ use SchrodtSven\TriviaGame\Type\ArrayClass;
 use SchrodtSven\TriviaGame\Type\StringClass;
 
 
-class ProviderBuilder
+class ProviderBuilder implements \Stringable
 {
-    private array $separators = [
-                                     '!', '"', '#', '$', '%', '&', '\'', '(', ')', 
-                                     '*', '+', ',', '-', '.', '/', // 'cause of macAddr ':', 
-                                     ';', '<', '=', '>', '?', '@'
-    ];
+    private array $separators = ['!', '"', '#', '$', '%', '&', '*', '+', '?', '@'];
 
     private array $mockSet;
     private int $eleCnt;
@@ -59,13 +55,14 @@ class ProviderBuilder
      * @param int $amount
      * @return array
      */
-    public function roolTheDice(int $amount = 10): array
+    public function rollTheDice(int $amount = 10, bool $asString = true): array|string
     {
         $result = [];
         
         for($i=0; $i < $amount; $i++) {
             $randEle = $this->getrandomInt(0, $this->eleCnt-1);
             $tmp = [];
+            
             $numberOfElements = $this->getrandomInt(1, count($this->mockSet[$randEle])-1);
             for($j=0;$j < $numberOfElements; $j++) {
                 $randKey = $this->getrandomInt(0, count($this->mockSet[$randEle])-1);
@@ -74,7 +71,7 @@ class ProviderBuilder
             }
             $sep = $this->separators[array_rand($this->separators)];
             
-            $result[] = [
+            $result[$i] = [
                 'no' => $numberOfElements,
                 'separator' => ($sep), 
                 'joined' =>implode($sep, $tmp),
@@ -82,11 +79,34 @@ class ProviderBuilder
             ];
             
          }
-        return $result;
+        return ($asString) ? $this->formatArrayAsAssignment($result) : $result;
     }
 
     public function getrandomInt(int $min = 0, int $max = 100)
     {
         return  (new \Random\Randomizer())->getInt($min, $max);
+    }
+
+    public function formatArrayAsAssignment(array $data): array
+    {
+        //var_dump($data);die;
+        $tmp = [];
+        for ($i=0; $i <count($data); $i++) { 
+            foreach(array_keys($data[$i]) as $item)
+                $tmp [] = $this->helper->getAssignment($item, $data[$i][$item]);
+        }
+       // var_dump($tmp);die;
+        return $data;
+        
+    }
+
+    public function __toString(): string
+    {
+        return sprintf('No of elements %s%s No of keys %s%s ',
+                        $this->eleCnt,
+                        PHP_EOL,
+                        $this->keyCnt,
+                        PHP_EOL
+        );
     }
 }

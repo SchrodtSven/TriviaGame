@@ -49,9 +49,31 @@ class StringClassTest extends TestCase
 
     }
 
+    /**
+     * @dataProvider splitJoinProvider
+     */
+    public function testSplitJoin(int $no, string $separator, string $joined, array $parts): void
+    {
+        
+        $foo = new StringClass($joined);
+        $parts = $foo->split(($separator));
+        
+        foreach($parts as $key => $value) {
+            $this->assertTrue($value === $parts[$key]);
+        }
+        $this->assertTrue((string) $parts->join($separator) === $joined);
+        $this->assertTrue(count($foo->split($separator)) === $no);
+        $this->assertTrue(count($parts) === $no);
+    }
+
     public function firstAppPrepProvider(): array
     {
         return require_once 'src/TriviaGame/MockData/firstName_string_basic_test.php';
+    }
+
+    public function splitJoinProvider(): array
+    {
+        return require_once 'src/TriviaGame/MockData/SundayIsNotRaw/splitData.php';
     }
     
 }
