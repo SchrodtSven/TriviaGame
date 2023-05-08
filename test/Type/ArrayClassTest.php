@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 /**
- * Testing if PHPUnit testing worx 
+ * Testing ArrayClass operations
  * 
  * @author Sven Schrodt<sven@schrodt.club>
  * @link https://github.com/SchrodtSven/TriviaGame
@@ -12,14 +12,35 @@ declare(strict_types=1);
  */
 
 use PHPUnit\Framework\TestCase;
+use SchrodtSven\TriviaGame\Type\StringClass;
+use SchrodtSven\TriviaGame\Type\ArrayClass;
 
 class ArrayClassTest extends TestCase
 
 {
-    
-    public function testBasix(): void
+    /**
+     * @dataProvider splitJoinProvider
+     */
+    public function testJoinAndBasix(int $no, string $separator, string $joined, array $parts): void
     {
-        $this->assertSame(2 + 2, 4);
+        
+        $joinedNew = (new ArrayClass($parts))->join($separator);
+
+        $partList = new ArrayClass($parts);
+        foreach($parts as $key => $value) {
+            $this->assertTrue($partList[$key]=== $parts[$key]);
+        }
+
+        $this->assertTrue(count($partList) === count($parts));
+        $this->assertTrue(count($partList) === $no);
+        $this->assertSame((string) $joinedNew, $joined);
+    }
+
+    
+
+    public function splitJoinProvider(): array
+    {
+        return require 'src/TriviaGame/MockData/SundayIsNotRaw/splitData.php';
     }
 
     

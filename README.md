@@ -13,6 +13,13 @@ Tiny trivia game consuming Open Trivia DB (https://opentdb.com/) API
  - using "live" API of Open Trivia Database or
  - "static" API (using persisted data from json, php, xml files | RDBMS)
 
+
+## Templating 
+
+- PHP Templates with alternative syntax - @see: https://www.php.net/manual/en/control-structures.alternative-syntax.php
+- *printf*() based templates
+- simple templates with place holders: {{NAME}}
+
 ## Development environment 
 
  Chronicler's duty: 

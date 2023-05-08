@@ -4,6 +4,9 @@ declare(strict_types=1);
 /**
  * Front controller class parsing HTTP routes and bootstrapping app
  * 
+ *  - parse HTTP routes
+ *  - dispatch to action controller {$controllername}Ctlr::{$action}Name() 
+ * 
  * 
  * @author Sven Schrodt<sven@schrodt.club>
  * @link https://github.com/SchrodtSven/TriviaGame
@@ -62,11 +65,12 @@ class FrontController
                     $this->param = $routeParts->push($_REQUEST);
 
           }
+          // attach current action controller to Repository 
           $this->app->getContainer()->create(
                         self::ACTN_CTRL_KEY,
                         $this->controller,
                         [$this->app->getContainer('SchrodtSven\TriviaGame\Application\Repository')]
-                )     
+                )     // and execute action
                 ->invoke($this->app->getContainer()->get(self::ACTN_CTRL_KEY), 
                        $this->action
                 );

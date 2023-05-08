@@ -21,6 +21,7 @@ class Question
     private string $difficulty; 
     private string $question; 
     private string $correctAnswer; 
+    private string $givenAnswer; 
     private array $incorrectAnswers; 
 
 
@@ -105,5 +106,29 @@ class Question
     public function getCorrectAnswer(): string
     {
         return $this->correctAnswer;
+    }
+
+    /**
+     * Get the value of givenAnswer
+     *
+     * @return string
+     */
+    public function getGivenAnswer(): string
+    {
+        return $this->givenAnswer;
+    }
+
+    /**
+     * Set the value of givenAnswer
+     *
+     * @param string $givenAnswer
+     *
+     * @return self
+     */
+    public function setGivenAnswer(string $givenAnswer): self
+    {
+        $this->givenAnswer = $givenAnswer;
+
+        return $this;
     }
 }

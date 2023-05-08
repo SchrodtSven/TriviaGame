@@ -21,21 +21,35 @@ class Config
 {
     private ArrayClass $data;
 
+    /**
+     * Constructor function
+     */
     public function __construct()
     {
         $this->data = new ArrayClass(require_once \SchrodtSven\TriviaGame\Autoload::MAIN_CFG);
-        
     }
 
+    /**
+     * Setting value to configuration
+     * 
+     * @param string $name
+     * @param mixed $data
+     * @return self
+     */
     public function set(string $name, mixed $data): self
     {   
         $this->data[$name] = $data;
         return $this;
     }
 
+    /**
+     * Getting value named $name
+     * 
+     * @param string $name
+     * @return mixed
+     */
     public function get(string $name): mixed
     {
         return $this->data[$name] ?? null;
-        
     }
 }

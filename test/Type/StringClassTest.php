@@ -40,7 +40,7 @@ class StringClassTest extends TestCase
     }
 
     /**
-     * @dataProvider splitJoinProvider
+     * @dataProvider splitAndJoinProvider
      */
     public function testSplitJoin(int $no, string $separator, string $joined, array $parts): void
     {
@@ -62,9 +62,9 @@ class StringClassTest extends TestCase
         return require_once 'src/TriviaGame/MockData/firstName_string_basic_test.php';
     }
 
-    public function splitJoinProvider(): array
+    public function splitAndJoinProvider(): array
     {
-        return require_once 'src/TriviaGame/MockData/SundayIsNotRaw/splitData.php';
+        return require 'src/TriviaGame/MockData/SundayIsNotRaw/splitData.php';
     }
     
 }
