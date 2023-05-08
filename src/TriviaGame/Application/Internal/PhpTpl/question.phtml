@@ -1,0 +1,11 @@
+<fieldset>  
+  <legend><?=$this->questionText?></legend>
+<?php
+    foreach($this->answers as $answer): ?>
+    <label for="answer_<?=$this->no?>"><?=$answer?>
+        <input type="checkbox" value="<?=$answer?>" name="answer_<?=$this->no?>">
+    </label>
+<?php
+    endforeach;
+?>
+  </fieldset>

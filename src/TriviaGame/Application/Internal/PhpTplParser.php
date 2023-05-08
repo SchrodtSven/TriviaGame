@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 /**
- * Strings as instances 
+ * Simple PHP template parser for tpls in alternative syntax
  * 
  * @author Sven Schrodt<sven@schrodt.club>
  * @link https://github.com/SchrodtSven/TriviaGame
@@ -20,8 +20,6 @@ class PhpTplParser
     private const TPL_SUFFIX = '.phtml';
 
     private array $props = ['lang' => 'en'];
-
-
 
     public function __construct(private string $tplName = 'GenericDoc')
     {

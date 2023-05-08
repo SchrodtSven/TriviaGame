@@ -39,6 +39,11 @@ class Autoload
     public const NAMESPACE_SEPARATOR ='\\';
 
     /**
+     * Main app configuration
+     */
+    public const MAIN_CFG = 'src/TriviaGame/Application/Internal/main_cfg.php';
+
+    /**
      * Registering AL
      *
      * @return void

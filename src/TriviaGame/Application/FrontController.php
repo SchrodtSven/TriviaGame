@@ -17,18 +17,26 @@ namespace SchrodtSven\TriviaGame\Application;
 use SchrodtSven\TriviaGame\Type\StringClass;
 use SchrodtSven\TriviaGame\Type\ArrayClass;
 
+
 class FrontController
 {
     private const DEFAULT_CTLR = 'DefaultCtlr';
     private const DEFAULT_ACTN = 'defaultActn';
 
+    public const ACTN_SUFFIX = 'Actn';
+    public const CTLR_SUFFIX = 'Ctlr';
+
     public string $controller;
     public string $action;
     public ArrayClass $param;
 
+    public function __construct(private Main $app)
+    {
+
+    }
+
     public function parseRoute()
     {
-        var_dump(getcwd());
         $tmp = (isset( $_SERVER['QUERY_STRING'])) 
         ? (new  StringClass($_SERVER['REQUEST_URI']))->replace('?' . $_SERVER['QUERY_STRING'], '')
         : new  StringClass($_SERVER['REQUEST_URI']);
@@ -43,20 +51,28 @@ class FrontController
                     break;
             
             case 1: 
-                    $this->controller = $routeParts->shift().'Ctlr';
-                    $this->action = self::DEFAULT_CTLR;
+                    $this->controller = (ucfirst(strtolower($routeParts->shift()))) . self::CTLR_SUFFIX;
+                    $this->action = self::DEFAULT_ACTN;
                     break;
             default:
-                    $this->controller = $routeParts->shift().'Ctlr';
-                    $this->action = $routeParts->shift().'Actn';
+                    $this->controller = (ucfirst(strtolower($routeParts->shift()))) . self::CTLR_SUFFIX;
+                    $this->action = (strtolower($routeParts->shift())) . self::ACTN_SUFFIX;
                     $this->param = $routeParts->push($_REQUEST);
 
           }
+          $this->app->getContainer()->create(
+                'currentActionController',
+                //'\\SchrodtSven\TriviaGame\Application\Ctlr\\' . 
+                $this->controller
+                )->invoke($this->app->getContainer()->get('currentActionController'), 
+                        $this->action,
+                        [$this->app]);
           
+          //$ac = '\\SchrodtSven\TriviaGame\Application\Ctlr\\' . $this->controller;
           
-
-
-           \var_dump($this);
+          //$me = $this->action;
+          // (new $ac)->$me();
+      
     }
     
 }

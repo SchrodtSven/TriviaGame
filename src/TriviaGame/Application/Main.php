@@ -12,12 +12,50 @@ declare(strict_types=1);
  */
 
 namespace SchrodtSven\TriviaGame\Application;
+use SchrodtSven\TriviaGame\Storage\SessionManager;
+use SchrodtSven\TriviaGame\Application\FrontController;
+use SchrodtSven\TriviaGame\Application\PhpTplParser;
 
 class Main
 {
-    private const RUNT_TIME_MODES = ['live', 'static'];
+    private const RUNTIME_MODES = ['live', 'static'];
     
-    private string $currentMode = self::RUNT_TIME_MODES[1];
+    private string $currentMode = self::RUNTIME_MODES[1];
 
+    public function __construct(private Repository $container)
+    {
+        
+            $this->init();
+            $this->run();
+    }
 
+    /**
+     * Get the value of container
+     */
+    public function getContainer(): Repository
+    {
+        return $this->container;
+    }
+
+    /**
+     * Set the value of container
+     */
+    public function setContainer(Repository $container): self
+    {
+        $this->container = $container;
+        return $this;
+    }
+
+    private function init():void
+    {
+        $this->container->set(new Config());
+        $this->container->set(SessionManager::getInstance());
+        $this->container->set(new FrontController($this));
+        
+    }
+
+    private function run():void
+    {
+       $this->container->get(FrontController::class)->parseRoute();
+    }
 }

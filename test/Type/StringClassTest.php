@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 /**
- * Testing if PHPUnit testing worx 
+ * Testing string class operations
  * 
  * @author Sven Schrodt<sven@schrodt.club>
  * @link https://github.com/SchrodtSven/TriviaGame
@@ -17,12 +17,6 @@ use SchrodtSven\TriviaGame\Type\StringClass;
 class StringClassTest extends TestCase
 
 {
-    
-    public function testBasix(): void
-    {
-        $this->assertSame(2 + 2, 4);
-    }
-
     /**
      * @dataProvider firstAppPrepProvider
      */
@@ -34,11 +28,8 @@ class StringClassTest extends TestCase
                                        string $braced,
                                        string $braced2,
                                        string $braced3,
-                                       string $braced4
-                                       ): void
+                                       string $braced4): void
     {
-                //'$original', '*', '#', '*$original', '$original#', '($original)', '<$original>', '{{$original}}', '[$original]'
-    
             $this->assertSame((string) (new StringClass($original)), $original);
             $this->assertSame((string) (new StringClass($original))->prepend($start), $start . $original);
             $this->assertSame((string) (new StringClass($original))->append($end), $original . $end);
@@ -46,7 +37,6 @@ class StringClassTest extends TestCase
             $this->assertSame((string) (new StringClass($original))->embrace('<'), "<$original>");
             $this->assertSame((string) (new StringClass($original))->embrace('{'), "{{$original}}");
             $this->assertSame((string) (new StringClass($original))->embrace('['), "[$original]");
-
     }
 
     /**
@@ -61,6 +51,7 @@ class StringClassTest extends TestCase
         foreach($parts as $key => $value) {
             $this->assertTrue($value === $parts[$key]);
         }
+
         $this->assertTrue((string) $parts->join($separator) === $joined);
         $this->assertTrue(count($foo->split($separator)) === $no);
         $this->assertTrue(count($parts) === $no);

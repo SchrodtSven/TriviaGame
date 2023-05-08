@@ -37,7 +37,6 @@ class CodeBuilder
 
     public function render(array $args): string
     {
-        //var_dump(func_get_args());        var_dump($args);die;
         return vsprintf($this->getTpl(), $args);
     }
 }

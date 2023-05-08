@@ -95,4 +95,15 @@ class Question
     {
         return $this->correctAnswer;
     }
+
+
+    /**
+     * Get the value of correctAnswer
+     *
+     * @return string
+     */
+    public function getCorrectAnswer(): string
+    {
+        return $this->correctAnswer;
+    }
 }

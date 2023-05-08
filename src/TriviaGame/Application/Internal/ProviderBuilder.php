@@ -89,15 +89,12 @@ class ProviderBuilder implements \Stringable
 
     public function formatArrayAsAssignment(array $data): array
     {
-        //var_dump($data);die;
         $tmp = [];
         for ($i=0; $i <count($data); $i++) { 
             foreach(array_keys($data[$i]) as $item)
                 $tmp [] = $this->helper->getAssignment($item, $data[$i][$item]);
         }
-       // var_dump($tmp);die;
         return $data;
-        
     }
 
     public function __toString(): string

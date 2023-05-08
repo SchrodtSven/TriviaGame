@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="<?= $this->cssHref ?>" />
   </head>
   <body>
+    <form action="/game/solve" method="POST">
+      <input type="range" max="100" min="0" value="0">
     <?= $this->content ?>
-
+    <input type="submit" value="send answers">
+    </form>
 </body>
 </html>

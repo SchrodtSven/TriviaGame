@@ -14,21 +14,28 @@ declare(strict_types=1);
 
 namespace SchrodtSven\TriviaGame\Application;
 
+use SchrodtSven\TriviaGame\Type\StringClass;
+use SchrodtSven\TriviaGame\Type\ArrayClass;
+
 class Config
 {
-    private string $baseUri = 'https://opentdb.com/api.php?amount=%u';
+    private ArrayClass $data;
 
-    private string $tokenSuffix = '&token=%s';
-
-    private string $retrieveTokenUri = 'https://opentdb.com/api_token.php?command=request';
-
-    private string $resetTokenUri = 'https://opentdb.com/api_token.php?command=reset&token=%s';
-
-    public function __construct(int $a, int $b)
+    public function __construct()
     {
-        for($i=$a; $i<$b+1;$i++) 
-        {
-            echo sprintf($this->baseUri, $i) . PHP_EOL;
-        }
+        $this->data = new ArrayClass(require_once \SchrodtSven\TriviaGame\Autoload::MAIN_CFG);
+        var_dump($this);
+    }
+
+    public function set(string $name, mixed $data): self
+    {
+        $this->data[$name] = $data;
+        return $this;
+    }
+
+    public function get(string $name): mixed
+    {
+        return $this->data[$name] ?? null;
+        
     }
 }
