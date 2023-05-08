@@ -13,13 +13,20 @@ declare(strict_types=1);
 
 namespace SchrodtSven\TriviaGame\Application\Internal;
 
+use SchrodtSven\TriviaGame\Application\Internal\PhpTplRuleInterface;
+
+
 class PhpTplParser
 {
     private string $tplDir = 'src/TriviaGame/Application/Internal/PhpTpl/'; 
 
+    private string $ruleNs = 'SchrodtSven\TriviaGame\Application\Internal\PhpTplRulez\\'; 
+
     private const TPL_SUFFIX = '.phtml';
 
     private array $props = ['lang' => 'en'];
+
+    private ?PhpTplRuleInterface $rules = null;  
 
     public function __construct(private string $tplName = 'GenericDoc')
     {
@@ -37,9 +44,32 @@ class PhpTplParser
         return $out;
     }
 
+    public function injectRule(PhpTplRuleInterface $rules)
+    {
+        
+        $this->rules = $rules;
+    }
+
+    public function loadRule(string $ruleName = 'GenericDoc')
+    {
+        $ruleClass = $this->ruleNs . $ruleName;
+        $rules = new $ruleClass();
+        $this->rules = $rules;
+    }
+
     public function __set(string $name, mixed $value): void
     {
+        if(!is_null($this->rules)) {
+            if(!$this->doSanityCheck($name)) {
+                throw new \Error('Rule violation:  REASON!');
+            };
+        }
         $this->props[$name] = $value;
+    }
+
+    private function doSanityCheck(string $name): bool
+    {
+        return in_array($name, $this->rules->getRules());
     }
 
     public function __get(string $name): mixed

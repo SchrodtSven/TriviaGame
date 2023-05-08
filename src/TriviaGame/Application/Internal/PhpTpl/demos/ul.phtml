@@ -7,10 +7,13 @@
       @since 2023-05-08
 -->
 <ul>
-<?php foreach($this->list as $item): echo
+<?php foreach($this->list as $item):
+
+$plus = ($this->current === $item->id)? ' selected' : '';
+echo
 <<<ITEM
 
-    <li id="itm-{$item->id}">Item {$item->name}</li>
+    <li id="item-{$item->id}"{$plus})>{$item->name}</li>
 ITEM;
 endforeach; ?>
 </ul>
