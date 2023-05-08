@@ -9,7 +9,8 @@
 <ul>
 <?php foreach($this->list as $item): echo
 <<<ITEM
-    <li id="itm-$item->number">Item $item->name</li>
+
+    <li id="itm-{$item->id}">Item {$item->name}</li>
 ITEM;
 endforeach; ?>
 </ul>

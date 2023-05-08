@@ -234,12 +234,12 @@ class ArrayClass implements \Iterator, \ArrayAccess, \Countable
      * @param string $filenname
      * @return self
      */
-    public static function createFromJsonFile(string $filename): self
+    public static function createFromJsonFile(string $filename, bool $asArray=true): self
     {
         if(!\file_exists($filename)) {
             throw new FileError($filename, 404);
         }
-        return new self(\json_decode(\file_get_contents($filename), true));
+        return new self(\json_decode(\file_get_contents($filename), $asArray));
     }
 
      /**
