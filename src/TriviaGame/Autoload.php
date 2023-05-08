@@ -43,6 +43,12 @@ class Autoload
      */
     public const MAIN_CFG = 'src/TriviaGame/Application/Internal/main_cfg.php';
 
+
+    /**
+     * Configuration for mocking super global out of http context
+     */
+    public const MOCK_HTTP_CFG = 'src/TriviaGame/Application/Internal/mock_http.php';
+
     /**
      * Registering AL
      *

@@ -16,7 +16,7 @@ namespace SchrodtSven\TriviaGame\Application;
 
 use SchrodtSven\TriviaGame\Type\StringClass;
 use SchrodtSven\TriviaGame\Type\ArrayClass;
-
+use  SchrodtSven\TriviaGame\Autoload;
 
 class FrontController
 {
@@ -30,13 +30,15 @@ class FrontController
     public string $action;
     public ArrayClass $param;
 
+    public const ACTN_CTRL_KEY = 'currentActionController';
+
     public function __construct(private Main $app)
     {
 
     }
-
+    //@FIXME -> do real dispatch() and parse route externally
     public function parseRoute()
-    {
+    {   
         $tmp = (isset( $_SERVER['QUERY_STRING'])) 
         ? (new  StringClass($_SERVER['REQUEST_URI']))->replace('?' . $_SERVER['QUERY_STRING'], '')
         : new  StringClass($_SERVER['REQUEST_URI']);
@@ -61,18 +63,13 @@ class FrontController
 
           }
           $this->app->getContainer()->create(
-                'currentActionController',
-                //'\\SchrodtSven\TriviaGame\Application\Ctlr\\' . 
-                $this->controller
-                )->invoke($this->app->getContainer()->get('currentActionController'), 
-                        $this->action,
-                        [$this->app]);
-          
-          //$ac = '\\SchrodtSven\TriviaGame\Application\Ctlr\\' . $this->controller;
-          
-          //$me = $this->action;
-          // (new $ac)->$me();
-      
-    }
+                        self::ACTN_CTRL_KEY,
+                        $this->controller,
+                        [$this->app->getContainer('SchrodtSven\TriviaGame\Application\Repository')]
+                )     
+                ->invoke($this->app->getContainer()->get(self::ACTN_CTRL_KEY), 
+                       $this->action
+                );
+     }
     
 }

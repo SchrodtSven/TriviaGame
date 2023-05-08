@@ -24,11 +24,11 @@ class Config
     public function __construct()
     {
         $this->data = new ArrayClass(require_once \SchrodtSven\TriviaGame\Autoload::MAIN_CFG);
-        var_dump($this);
+        
     }
 
     public function set(string $name, mixed $data): self
-    {
+    {   
         $this->data[$name] = $data;
         return $this;
     }

@@ -319,6 +319,11 @@ class ArrayClass implements \Iterator, \ArrayAccess, \Countable
         return new self(array_keys($this->content)) ;
     }
 
+    public function hasKey(string $name): bool
+    {
+        return array_key_exists($name, $this->content);
+    }
+
     /**
      * Applying callback on every element
      * 

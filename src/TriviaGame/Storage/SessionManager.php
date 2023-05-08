@@ -3,8 +3,8 @@
 declare(strict_types=1);
 /**
  * Session manager - abstracting from:
- *  -sessions* functions and
- * - super global $_SESSION
+ *  - session* functions and
+ * -  super global $_SESSION
  * 
  * 
  * @author Sven Schrodt<sven@schrodt.club>
@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace SchrodtSven\TriviaGame\Storage;
 
+use Error;
 use SchrodtSven\TriviaGame\Type\StringClass;
 use SchrodtSven\TriviaGame\Type\ArrayClass;
 
@@ -96,5 +97,15 @@ class SessionManager
     {
         session_abort();
         return $this;
+    }
+
+    /**
+     * Interceptor to avoid instance from being cloned
+     */
+    public function __clone()
+    {
+          throw new Error(sprintf('Cloning is not allowed for %s',
+                                    $this::class
+        ));  
     }
 }

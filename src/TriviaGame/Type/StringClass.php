@@ -36,6 +36,13 @@ class StringClass implements \Stringable
         return $this->margin($mark);
     }
 
+
+    public function quoteTypographic(): self
+    {
+        $this->content = "“{$this->content}”";
+        return $this;
+    }
+
     public function embrace(string $start = '(')
     {
         $stop = match($start) {

@@ -13,8 +13,9 @@ declare(strict_types=1);
  */
 
 namespace SchrodtSven\TriviaGame\Application\Ctlr;
+use SchrodtSven\TriviaGame\Application\ActionController;
 
-class GameCtlr
+class GameCtlr extends ActionController
 { 
 
     public function solveActn(): void
@@ -26,6 +27,7 @@ class GameCtlr
     public function __call(string $name, array $arguments): mixed
     {
         echo $name . ' invoked @' . date('Y-m-d H:is:');   
+        var_dump($this->container->keys());
         return true;
     }
 

@@ -15,6 +15,7 @@ namespace SchrodtSven\TriviaGame\Application;
 use SchrodtSven\TriviaGame\Storage\SessionManager;
 use SchrodtSven\TriviaGame\Application\FrontController;
 use SchrodtSven\TriviaGame\Application\PhpTplParser;
+use SchrodtSven\TriviaGame\Application\Internal\Environment;
 
 class Main
 {
@@ -49,9 +50,13 @@ class Main
     private function init():void
     {
         $this->container->set(new Config());
-        $this->container->set(SessionManager::getInstance());
+        //$this->container->set($this);
+        if(!Environment::runsOnCli()) {
+            $this->container->set(SessionManager::getInstance());
+        } else {
+            $_SERVER = array_merge($_SERVER, require_once \SchrodtSven\TriviaGame\Autoload::MOCK_HTTP_CFG);
+        }
         $this->container->set(new FrontController($this));
-        
     }
 
     private function run():void

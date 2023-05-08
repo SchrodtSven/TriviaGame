@@ -1,0 +1,15 @@
+<!--  This PHP template is part of TriviaGame PHP template demo suite
+      https://github.com/SchrodtSven/TriviaGame
+      @author Sven Schrodt<sven@schrodt.club>
+      @link https://github.com/SchrodtSven/TriviaGame
+      @package TriviaGame
+      @version 0.1
+      @since 2023-05-08
+-->
+<ul>
+<?php foreach($this->list as $item): echo
+<<<ITEM
+    <li id="itm-$item->number">Item $item->name</li>
+ITEM;
+endforeach; ?>
+</ul>

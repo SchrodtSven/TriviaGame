@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 /**
- * Repository (aka container)
+ * Repository (aka “container”)
  * 
  *  - injecting instances to other objects
  *  - getting instances
@@ -21,6 +21,7 @@ namespace SchrodtSven\TriviaGame\Application;
 use SchrodtSven\TriviaGame\Application\Config;
 use SchrodtSven\TriviaGame\Type\StringClass;
 use SchrodtSven\TriviaGame\Type\ArrayClass;
+use SchrodtSven\TriviaGame\Autoload;
 
 class Repository
 {
@@ -39,8 +40,11 @@ class Repository
     {
         if($name === self::CURR_ACTN_CTLR_KEY) {
             $className = $this->get(Config::class)->get(self::CTLR_NS_KEY) . $className;
+            $this->instances[$name] = new $className($this);
+        } else {
+            $this->instances[$name] = new $className();
         }
-        $this->instances[$name] = new $className();
+        
         return $this;
     }
 
@@ -62,6 +66,15 @@ class Repository
         return  $this;
     }
 
+    public function has(string $name): bool
+    {
+        return $this->instances->hasKey($name);
+    }
+
+    public function keys(): ArrayClass
+    {
+        return $this->instances->getKeys();
+    }
 
     public function invoke(object $instance, string $method, array $params = []): mixed
     {
