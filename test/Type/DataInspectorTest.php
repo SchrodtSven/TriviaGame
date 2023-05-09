@@ -29,23 +29,7 @@ class DataInspectorTest extends CustomTestCase
         $this->assertSame($type, $inspector->getDatum()->getType());
     }
 
-    public function NOtestFoo()
-    {
-        $dta = $this->dataInspectorProvider();
-
-        for($i=0;$i<count($dta); $i++) {
-            if($dta[$i][1]=='float' &&  gettype($dta[$i][0]) !='double') {
-                echo sprintf(
-                    '%u : %d %s',
-                    $i,
-                    $dta[$i][0],
-                    PHP_EOL
-                );
-            }
-        }
-
-        $this->assertTrue(2 == 1+1);
-    }
+    
 
     public function splitJoinProvider(): array
     {
