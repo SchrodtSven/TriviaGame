@@ -1,0 +1,62 @@
+.question-text {
+	font-family: system-ui, sans-serif;
+	font-size: 1.2rem;
+	font-weight: bold;
+	line-height: 1.1;
+}
+.form-control {
+	font-family: system-ui, sans-serif;
+	font-size: 1.2rem;
+	
+	line-height: 1.1;
+
+	display: grid;
+	grid-template-columns: 1em auto;
+	gap: 0.5em;
+  }
+  
+  input[type="radio"] {
+	appearance: none;
+	background-color: #fff;
+	margin: 0;
+	font: inherit;
+	color: currentColor;
+	width: 1.15em;
+	height: 1.15em;
+	border: 0.15em solid currentColor;
+	border-radius: 50%;
+  }
+
+  flex-container1 {
+	display: flex;
+	
+  }
+  
+  .flex-item1 {
+	background-color: white;
+	width: 8em;
+	margin: 5px;
+	
+  }
+
+
+.form-control {
+	font-family: system-ui, sans-serif;
+	font-size: 1.2rem;
+	line-height: 1.1;
+	display: grid;
+	grid-template-columns: 1em auto;
+	gap: 0.5em;
+}
+  
+  input[type="radio"] {
+	appearance: none;
+	background-color: #fff;
+	margin: 0;
+	font: inherit;
+	color: currentColor;
+	width: 1.15em;
+	height: 1.15em;
+	border: 0.15em solid currentColor;
+	border-radius: 50%;
+}

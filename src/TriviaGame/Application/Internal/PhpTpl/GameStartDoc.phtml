@@ -1,0 +1,19 @@
+<!-- This PHP template is part of TriviaGame
+     https://github.com/SchrodtSven/TriviaGame
+-->
+<!doctype html>
+<html lang="<?=$this->lang?>">
+  <head>
+    <meta charset="utf-8">
+    <title><?= $this->title ?></title>
+    <link rel="stylesheet" href="<?= $this->cssHref ?>" />
+  </head>
+  <body>
+    <form action="/game/solve" method="POST">
+      <input type="range" max="100" min="0" value="0">
+      <output value="">0/5</output>
+    <?= $this->content ?>
+    <input type="submit" value="send answers">
+    </form>
+</body>
+</html>

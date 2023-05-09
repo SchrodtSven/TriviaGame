@@ -1,11 +1,15 @@
-<fieldset>  
-  <legend><?=$this->questionText?></legend>
-<?php
+<fieldset class="flex-container">  
+  <legend class="question-text"> <?=$this->questionText?> </legend>
+  <?php
     foreach($this->answers as $answer): ?>
-    <label for="answer_<?=$this->no?>"><?=$answer?>
-        <input type="checkbox" value="<?=$answer?>" name="answer_<?=$this->no?>">
-    </label>
+        <input class="flex-item" type="radio" value="<?=$answer?>" name="answer_<?=$this->no?>">
+        <label class="flex-item" for="answer_<?=$this->no?>"><?=$answer?></label>
+        <output class="flex-item"> lorem Ips</label>
 <?php
     endforeach;
 ?>
-  </fieldset>
+<details class="flex-item">
+        <summary> ...spoiler</summary>
+        <p><?=$this->correctAnswer?></p>
+</details>
+</fieldset>

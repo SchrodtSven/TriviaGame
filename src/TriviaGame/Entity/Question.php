@@ -50,13 +50,13 @@ class Question
                 case 'question' :
                         $tmp->question = html_entity_decode($value);
                         break;
-                case 'incorrect_answers' :
+                case 'incorrectAnswers' :
                         $tmp->incorrectAnswers = $value;
                         array_walk($tmp->incorrectAnswers, function(&$item) {
-                            $item = html_entity_decode($item);
+                            $item = html_entity_decode((string) $item);
                         });
                         break;
-                case 'correct_answer' :
+                case 'correctAnswer' :
                         $tmp->correctAnswer = html_entity_decode($value);
                         break;
             }
@@ -128,6 +128,78 @@ class Question
     public function setGivenAnswer(string $givenAnswer): self
     {
         $this->givenAnswer = $givenAnswer;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of category
+     *
+     * @return string
+     */
+    public function getCategory(): string
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set the value of category
+     *
+     * @param string $category
+     *
+     * @return self
+     */
+    public function setCategory(string $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of type
+     *
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set the value of type
+     *
+     * @param string $type
+     *
+     * @return self
+     */
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of difficulty
+     *
+     * @return string
+     */
+    public function getDifficulty(): string
+    {
+        return $this->difficulty;
+    }
+
+    /**
+     * Set the value of difficulty
+     *
+     * @param string $difficulty
+     *
+     * @return self
+     */
+    public function setDifficulty(string $difficulty): self
+    {
+        $this->difficulty = $difficulty;
 
         return $this;
     }

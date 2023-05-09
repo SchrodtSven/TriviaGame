@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace SchrodtSven\TriviaGame\Application;
 
+use SchrodtSven\TriviaGame\Storage\SessionManager;
 use SchrodtSven\TriviaGame\Type\StringClass;
 use SchrodtSven\TriviaGame\Type\ArrayClass;
 
@@ -26,6 +27,21 @@ abstract class ActionController
 
     }
 
-   
+    public function getPost()
+    {
+        //@todo verify & sanitize
+        return $_POST;
+    }
+
+    public function getPostByKey(string $key): ?string
+    {
+        //@todo verify & sanitize
+        return $_POST[$key] ?? null;
+    }
+
+    public function getSessionManager(): SessionManager
+    {
+        return $this->container->get(SessionManager::class);
+    }
     
 }

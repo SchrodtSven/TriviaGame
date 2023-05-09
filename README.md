@@ -13,6 +13,13 @@ Tiny trivia game consuming Open Trivia DB (https://opentdb.com/) API
  - using "live" API of Open Trivia Database or
  - "static" API (using persisted data from json, php, xml files | RDBMS)
 
+ - game modes:
+   - competition
+   - competion w. time limit
+   - training (see. correct answers after clicking '...spoiler')
+
+   - CLI mode for plain text  playing in a shell 
+
 
 ## Templating 
 

@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace SchrodtSven\TriviaGame\Application\Ctlr;
 use SchrodtSven\TriviaGame\Application\ActionController;
+use SchrodtSven\TriviaGame\Storage\SessionManager;
+use SchrodtSven\TriviaGame\Application\Modl\SolverModl;
 
 class GameCtlr extends ActionController
 { 
@@ -21,6 +23,7 @@ class GameCtlr extends ActionController
     public function solveActn(): void
     {
         echo __FUNCTION__ . ' invoked @' . date('Y-m-d H:is:');
+        echo (new SolverModl($this->getSessionManager()->get('quoteList'), $this))->solve();
     }
 
 
