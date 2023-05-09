@@ -11,7 +11,6 @@ declare(strict_types=1);
  * @since 2023-05-04
  */
 
-
 namespace SchrodtSven\TriviaGame\Application\Internal;
 
 class Environment

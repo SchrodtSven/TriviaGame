@@ -43,6 +43,12 @@ class StringClass implements \Stringable
         return $this;
     }
 
+    public function trim(): self
+    {
+        $this->content = trim($this->content);
+        return $this;
+    }
+
     public function embrace(string $start = '(')
     {
         $stop = match($start) {

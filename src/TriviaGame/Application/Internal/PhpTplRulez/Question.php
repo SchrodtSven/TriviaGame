@@ -11,14 +11,14 @@ declare(strict_types=1);
  * @since 2023-05-08
  */
 
- namespace SchrodtSven\TriviaGame\Application\Internal\PhpTplRulez;
+namespace SchrodtSven\TriviaGame\Application\Internal\PhpTplRulez;
 use SchrodtSven\TriviaGame\Application\Internal\PhpTplRuleInterface;
 
-class GenericDoc implements PhpTplRuleInterface
+class Question implements PhpTplRuleInterface
 {
     private array $allowableVars = [
-                                    'no' => ['int'], 
-                                    'answers' => ['SchrodtSven\TriviaGame\Type\StringClass']
+                                    'no' => ['type' => 'int', 'min' => 1, 'max' => \PHP_INT_MAX], 
+                                    'answers' => ['type' => 'SchrodtSven\TriviaGame\Type\StringClass']
     ];
 
     public function getRules(): array

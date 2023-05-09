@@ -67,6 +67,7 @@ class PhpTplParser
         $this->props[$name] = $value;
     }
 
+    //@FIXME - use ArrayClass & ArrayClass to check types, min, max , boundaries and other limitations
     private function doSanityCheck(string $name): bool
     {
         return in_array($name, $this->rules->getRules());

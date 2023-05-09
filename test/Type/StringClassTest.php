@@ -59,7 +59,7 @@ class StringClassTest extends TestCase
 
     public function firstAppPrepProvider(): array
     {
-        return require_once 'src/TriviaGame/MockData/firstName_string_basic_test.php';
+        return require 'src/TriviaGame/MockData/firstName_string_basic_test.php';
     }
 
     public function splitAndJoinProvider(): array

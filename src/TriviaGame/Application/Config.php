@@ -26,7 +26,7 @@ class Config
      */
     public function __construct()
     {
-        $this->data = new ArrayClass(require_once \SchrodtSven\TriviaGame\Autoload::MAIN_CFG);
+        $this->data = new ArrayClass(require \SchrodtSven\TriviaGame\Autoload::MAIN_CFG);
     }
 
     /**

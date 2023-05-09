@@ -37,7 +37,8 @@ class ProviderBuilder implements \Stringable
      */
     public function __construct()
     {
-        $this->mockSet = require_once 'src/TriviaGame/MockData/great_mock_list.php';
+    
+        $this->mockSet = require 'src/TriviaGame/MockData/great_mock_list.php';
         $this->eleCnt = count($this->mockSet);
         $this->keys = array_keys($this->mockSet[0]);
         $this->keyCnt = count($this->keys);
