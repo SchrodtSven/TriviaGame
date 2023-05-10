@@ -1,7 +1,11 @@
 #!/usr/bin/env php
 <?php
-system("stty -icanon");
+    
+use SchrodtSven\TriviaGame\Cli\StdIO;
+
+system("stty -icanon -echo");
 echo "input# ";
+
 while ($c = fread(STDIN, 1)) {
     echo "Read from STDIN: " . $c . "\ninput# ";
 }

@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 /**
- * Custom test case class
+ * Custom test case class inherits from PHPUnit\Framework\TestCase
+ * 
+ * - adding methods for dataProvider usage
  * 
  * @author Sven Schrodt<sven@schrodt.club>
  * @link https://github.com/SchrodtSven/TriviaGame

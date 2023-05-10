@@ -51,9 +51,9 @@ class Main
     {
         $this->container->set(new Config());
         //$this->container->set($this);
-        if(!Environment::runsOnCli()) {
+        if(!Environment::runsOnCli()) { // in cli mode we do not http session handling ....
             $this->container->set(SessionManager::getInstance());
-        } else {
+        } else { /// ... but we have to "emulate" http context for controller/view testing
             $_SERVER = array_merge($_SERVER, require_once \SchrodtSven\TriviaGame\Autoload::MOCK_HTTP_CFG);
         }
         $this->container->set(new FrontController($this));

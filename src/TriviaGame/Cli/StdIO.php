@@ -23,7 +23,7 @@ class StdIO
 
     public function readCharacterFromList(array $allowed = ['a', 'b', 'c', 'd', 'A', 'B', 'C', 'D']): string
     {
-        system("stty -icanon -echo");
+        system("stty -icanon -echo"); //set up terminal options - no LF needed -do not echo back
         $a = '';
         while(!in_array($a, $allowed))
             $a = fread(STDIN,1);
