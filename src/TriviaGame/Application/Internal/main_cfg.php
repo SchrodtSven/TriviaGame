@@ -15,12 +15,14 @@ declare(strict_types=1);
 
 return [
     'baseUri' =>'https://opentdb.com/api.php?amount=%u',
-    'tokenSuffix' =>'&token=%s',
+    'tokenSuffix' =>'token=%s',
+    'categorySuffix' => '?category=%u',
     'retrieveTokenUri' =>'https://opentdb.com/api_token.php?command=request',
     'resetTokenUri' =>'https://opentdb.com/api_token.php?command=reset&token=%s',
     'actnControllerNS' =>'\SchrodtSven\TriviaGame\Application\Ctlr\\', 
     'actnControllerDir' =>'src/TriviaGame/Application/Ctlr/', 
-    
+    'retrieveCategoriesUri' => 'https://opentdb.com/api_category.php',
+    'stats' => 'https://opentdb.com/api_count_global.php'
 
 
 ];

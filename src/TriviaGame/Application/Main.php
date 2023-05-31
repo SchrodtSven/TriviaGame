@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Class running application and starting bootstrapping
+ * Class running application 
  *
  * @package P7TriviaGame
  * @author  Sven Schrodt <sven@schrodt.club>
@@ -53,8 +53,9 @@ class Main
         //$this->container->set($this);
         if(!Environment::runsOnCli()) { // in cli mode we do not http session handling ....
             $this->container->set(SessionManager::getInstance());
-        } else { /// ... but we have to "emulate" http context for controller/view testing
-            $_SERVER = array_merge($_SERVER, require_once \SchrodtSven\TriviaGame\Autoload::MOCK_HTTP_CFG);
+        } else { /// ... but we have to "emulate" http context for controller/view testing in cli mode
+            $httpContext = Environment::getHttpContextArray();
+            $_SERVER = array_merge($_SERVER, $httpContext);
         }
         $this->container->set(new FrontController($this));
     }

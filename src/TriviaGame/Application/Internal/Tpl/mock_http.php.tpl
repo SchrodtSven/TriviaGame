@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Mock data -> "emulating" HTTP context for cli
+ * Tpl with {{PLACE_HOLDERS}} for mock data -> "emulating" HTTP context for cli
  *
  *
  * @package P7TriviaGame

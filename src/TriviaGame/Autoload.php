@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 /**
- * Auto loading for current project 
+ * Auto loading and initial setup (with public constants) for current project 
  * 
  * @author Sven Schrodt<sven@schrodt.club>
  * @link https://github.com/SchrodtSven/TriviaGame
@@ -87,7 +87,7 @@ class Autoload
 
     public function __construct()
     {
-        // workaround for current PHP Development server
+        // workaround for current PHP Development server -> if route eq '/'
         if(str_ends_with(getcwd(), 'public')) {
             chdir(('../'));    
         }

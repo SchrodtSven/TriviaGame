@@ -18,7 +18,7 @@ class Question implements PhpTplRuleInterface
 {
     private array $allowableVars = [
                                     'no' => ['type' => 'int', 'min' => 1, 'max' => \PHP_INT_MAX], 
-                                    'answers' => ['type' => 'SchrodtSven\TriviaGame\Type\StringClass']
+                                    'answers' => ['type' => 'SchrodtSven\TriviaGame\Type\StringClass[]']
     ];
 
     public function getRules(): array

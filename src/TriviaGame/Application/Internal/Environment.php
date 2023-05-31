@@ -12,11 +12,25 @@ declare(strict_types=1);
  */
 
 namespace SchrodtSven\TriviaGame\Application\Internal;
+use SchrodtSven\TriviaGame\Autoload;
 
 class Environment
 {
     public static function runsOnCli(): bool
     {
         return (php_sapi_name() === 'cli');
+    }
+
+    public static function getHttpContextArray(): array
+    {
+        $floated = rand(1,100) / rand(120, 1000);   
+        $tmp = require Autoload::MOCK_HTTP_CFG;
+        foreach($tmp as &$item) {
+            $item = str_replace(
+                                ['{{SERVER_HOST}}', '{{USER_NAME}}', '{{REMOTE_PORT}}', '{{ROUTE}}', '{{SESS_ID}}', '{{TSUFX}}', '{{TIME}}'], 
+                                ['marvell.schrodt.club', 'Captain_Future', '666','/foo/Bar/id/2342/', md5(date('Ymd..-His')), $floated, time() ],
+                                (string) $item);
+        }
+        return $tmp;
     }
 }
